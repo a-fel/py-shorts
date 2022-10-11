@@ -15,10 +15,10 @@ class Vector():
 
 class Boid():
     def __init__(self):
-        # self.position = Vector(random.randint(X_MIN, X_MAX), random.randint(Y_MIN, Y_MAX))
-        self.position = Vector(250, 250)
+        self.position = Vector(random.randint(X_MIN, X_MAX), random.randint(Y_MIN, Y_MAX))
+        # self.position = Vector(250, 250)
         self.velocity = Vector(random.randint(X_MIN, X_MAX // 100), random.randint(Y_MIN, Y_MAX // 100))
-        self.acceleration = Vector(0, 0)
+        self.acceleration = Vector(random.randint(0, 4), random.randint(0, 2))
 
     def __str__(self):
         return f"Position = {self.position.x}, {self.position.y}\nVelocity = {self.velocity.x}, {self.velocity.y}\nAcceleration = {self.acceleration.x}, {self.acceleration.y}"
