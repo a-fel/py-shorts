@@ -3,18 +3,8 @@ import matplotlib.animation as anim
 import math
 import boid
 
-NUM_OF_BOIDS = 10
-STEPS = 200
-b_x_arr = list()
-b_y_arr = list()
-
-c_x_arr = list()
-c_y_arr = list()
-
-
-b = boid.Boid()
-c = boid.Boid()
-
+NUM_OF_BOIDS = 15
+STEPS = 400
 positions = list()
 
 for bo in range(NUM_OF_BOIDS):
@@ -23,10 +13,12 @@ for bo in range(NUM_OF_BOIDS):
     for step in range(1, STEPS + 1):
         curr_boid_positions.append((curr_boid.position.x, curr_boid.position.y))
 
-        #
-        if step % 50 == 0:
-            curr_boid.change_direction()
+        curr_boid.collision()
         curr_boid.move()
+
+
+
+
     positions.append(curr_boid_positions)
 
 fig, ax = plt.subplots(1, 1)
@@ -39,5 +31,5 @@ def update(i):
     ax.set_ylim([0, boid.Y_MAX])
 
 
-animation = anim.FuncAnimation(fig=fig, func=update, frames=200, interval=5)
+animation = anim.FuncAnimation(fig=fig, func=update, frames=STEPS, interval=5)
 plt.show()
